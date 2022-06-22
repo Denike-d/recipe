@@ -1,0 +1,24 @@
+$primary-color: #ffffff;
+$accent-color: #84b7fe;
+$text-color: #000000;
+$font-weight : (
+   "regular" : 400,
+   "medium" : 500,
+   "bold" : 700,
+);
+   
+body {
+    background: $primary-color;
+    font-weight: map-get($font-weight, medium);
+}
+.header{
+    background-color: $accent-color;
+    padding: 4px;
+}
+.hero{
+    max-width: 100%;
+}
+.image {
+    width: 100%;
+    object-fit: fill;
+}

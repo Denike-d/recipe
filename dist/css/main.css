@@ -1,0 +1,20 @@
+body {
+  background: #ffffff;
+  font-weight: 500;
+}
+
+.header {
+  background-color: #84b7fe;
+  padding: 4px;
+}
+
+.hero {
+  max-width: 100%;
+}
+
+.image {
+  width: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+/*# sourceMappingURL=main.css.map */
