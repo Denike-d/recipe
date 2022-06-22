@@ -9,10 +9,6 @@ export default function RecipeData() {
   const [error, setError] = useState();
   const [query, setQuery] = useState("chicken");
 
-  useEffect(() => {
-    getRecipe();
-  }, [query]);
-
   function handleChange(e) {
     setUserInput(e.target.value);
   }
@@ -37,6 +33,9 @@ export default function RecipeData() {
       setError("Username is incorrect");
     }
   }
+  useEffect(() => {
+    getRecipe(recipeApi);
+  }, [query]);
 
   return (
     <div>
@@ -52,8 +51,10 @@ export default function RecipeData() {
         {recipe.map((recipes, index) => (
           <Recipe
             key={index}
+            image={recipes.recipe.image}
             title={recipes.recipe.label}
             ingredients={recipes.recipe.ingredients}
+            cuisineType={recipes.recipe.cuisineType}
           />
         ))}
       </div>

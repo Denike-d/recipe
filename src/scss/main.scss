@@ -6,6 +6,16 @@ $font-weight : (
    "medium" : 500,
    "bold" : 700,
 );
+$columns: 12;
+$gap: 30px;
+$breakpoints: (
+    xs: 480px,
+    sm: 768px,
+    md: 960px,
+    lg: 1170px,
+    xl: 1280px
+);
+
    
 body {
     background: $primary-color;
@@ -22,3 +32,40 @@ body {
     width: 100%;
     object-fit: fill;
 }
+@mixin create-selectors($breakpoint: null) {
+    $infix: if($breakpoint == null, '', '-#{$breakpoint}');
+
+    @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+            grid-column-end: span $i;
+        }
+        .col-offset#{$infix}-#{$i} {
+            grid-column-start: $i + 1;
+        }
+        .row#{$infix}-#{$i} {
+            grid-row-end: span $i;
+        }
+        .row-offset#{$infix}-#{$i} {
+            grid-row-start: $i + 1;
+        }
+    }
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    grid-gap: $gap;
+    gap: $gap;
+}
+@include create-selectors;
+@each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+        @include create-selectors($breakpoint);
+    }
+}
+// .image-container{
+//     width: 100%;
+//     display: block;
+// }
+// .grid{
+//     grid-template-columns: repeat(auto-fill, minmax(252px, 1fr));
+// }

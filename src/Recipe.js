@@ -1,16 +1,21 @@
 import React from "react";
 
 export default function Recipe(props) {
-  const { title, ingredients, image } = props;
+  const { title, ingredients, image, cuisineType } = props;
   return (
-    <div>
-      <p>{title}</p>
-      <img src={image} width={100} height={100} />
-      <ol>
-        {ingredients.map((ingredient) => (
-          <li>{ingredient.text}</li>
-        ))}
-      </ol>
-    </div>
+    <>
+      <div className="grid">
+        <p className="title">{title}</p>
+        <div className="image-container">
+          <img src={image} width={100} height={100} />
+        </div>
+        <ol>
+          {ingredients.map((ingredient) => (
+            <li>{ingredient.text}</li>
+          ))}
+        </ol>
+        <p className="cuisine">Cuisine Type: {cuisineType}</p>
+      </div>
+    </>
   );
 }
