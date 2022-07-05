@@ -8,10 +8,8 @@ export default function Header() {
           <h3>reciFood</h3>
         </nav>
       </div>
-      <div className="hero">
-        <div className="hero-image">
-          <img src="food.jpg" className="image" />
-        </div>
+      <div className="background-image">
+        {/* <img src="food.jpg" className="image" /> */}
       </div>
     </>
   );

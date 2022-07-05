@@ -1,13 +1,15 @@
 $primary-color: #ffffff;
-$accent-color: #84b7fe;
+$secondary-color:  #06aed5;
+$accent-color: #d6f0f7;
 $text-color: #000000;
 $font-weight : (
    "regular" : 400,
    "medium" : 500,
    "bold" : 700,
 );
-$columns: 12;
-$gap: 30px;
+$columns: 4;
+$gap: 20px;
+$padding: 20px;
 $breakpoints: (
     xs: 480px,
     sm: 768px,
@@ -25,13 +27,55 @@ body {
     background-color: $accent-color;
     padding: 4px;
 }
+.background-image {
+    background-image: url('food.jpg');
+    
+}
+form{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+form input[type=text]{
+    float: left;
+    width: 20%;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    // border-left: none; /* Prevent double borders */
+    border-radius: 5px 0 0 5px;
+  }
+  form button {
+    width: max-content;
+    padding: 10px;
+    background: $secondary-color;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  form button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
 .hero{
     max-width: 100%;
+    max-height: 20px;
 }
-.image {
+.image{
     width: 100%;
-    object-fit: fill;
+    object-fit: cover;
 }
+
 @mixin create-selectors($breakpoint: null) {
     $infix: if($breakpoint == null, '', '-#{$breakpoint}');
 
@@ -55,6 +99,17 @@ body {
     grid-template-columns: repeat($columns, 1fr);
     grid-gap: $gap;
     gap: $gap;
+    padding: 10px 40px;
+}
+.grid-card{
+    border: "2px solid rgb(195, 219, 255)";
+    box-shadow: 0 0 5px $accent-color;
+    border-radius: 5px;
+}
+.label{
+    display: flex;
+    justify-content: center;
+    color: $secondary-color;
 }
 @include create-selectors;
 @each $breakpoint, $width in $breakpoints {
@@ -62,10 +117,20 @@ body {
         @include create-selectors($breakpoint);
     }
 }
-// .image-container{
-//     width: 100%;
-//     display: block;
-// }
-// .grid{
-//     grid-template-columns: repeat(auto-fill, minmax(252px, 1fr));
-// }
+.ingredients{
+    background-color: $accent-color;
+    padding: 10px;
+}
+.grid-image{
+    width: 100%;
+    height: 25%;
+    object-fit: cover;
+}
+.image-container{
+    width: 100%;
+    display: block;
+}
+.footer{
+    background-color: $secondary-color;
+    padding: 20px;
+}

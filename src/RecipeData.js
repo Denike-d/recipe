@@ -7,7 +7,7 @@ export default function RecipeData() {
   const [recipe, setRecipe] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [error, setError] = useState();
-  const [query, setQuery] = useState("chicken");
+  const [query, setQuery] = useState("rice");
 
   function handleChange(e) {
     setUserInput(e.target.value);
@@ -38,24 +38,39 @@ export default function RecipeData() {
   }, [query]);
 
   return (
-    <div>
-      <form type="submit" onSubmit={getUserInput}>
-        <label>Name of food</label> <br />
-        <input type="text" onChange={handleChange} />
-        <button type="submit">Get Recipe</button>
-      </form>
+    <div className="body">
+      <div className="form">
+        <form type="submit" onSubmit={getUserInput}>
+          <input type="text" onChange={handleChange} />
+          <button type="submit">Get Recipe</button>
+        </form>
+      </div>
       <div>
         <p></p>
       </div>
-      <div>
+      <div className="grid">
         {recipe.map((recipes, index) => (
-          <Recipe
-            key={index}
-            image={recipes.recipe.image}
-            title={recipes.recipe.label}
-            ingredients={recipes.recipe.ingredients}
-            cuisineType={recipes.recipe.cuisineType}
-          />
+          <div key={index} className="grid-card">
+            <p className="label">{recipes.recipe.label}</p>
+            <img src={recipes.recipe.image} className="grid-image" />
+            <div className="ingredients">
+              <p>Ingredients</p>
+              <ol>
+                {recipes.recipe.ingredients.map((ingredient) => (
+                  <li>{ingredient.text}</li>
+                ))}
+              </ol>
+            </div>
+
+            {/* <p className="cuisine">
+              Cuisine Type: {recipes.recipe.cuisineType}
+            </p> */}
+          </div>
+          //   <ol>
+          //   {ingredients.map((ingredient) => (
+          //     <li>{ingredient.text}</li>
+          //   ))}
+          // </ol>
         ))}
       </div>
     </div>
